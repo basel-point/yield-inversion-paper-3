@@ -2,17 +2,18 @@
 
 This repository provides the **public companion materials** for **Basel Point — Paper 3**:
 
-> **“Supervised Logistic Model with Macro Variables for Recession Probability”**  
+> **“Why the Yield Curve Lost Its Signal and How to Recover It”**  
 > Substack: https://thebaselpoint.substack.com/p/why-the-yield-curve-lost-its-signal
 
 It includes a **redacted preview notebook** and **static figures** that illustrate the main model outputs.  
 The full implementation (data pipeline, complete notebook, and internal diagnostics) is maintained in a **separate private repository**.
 
+Supervised Logistic Model with Macro Variables for Recession Probability
 ---
 
 ## Repository Contents
 
-- `notebooks/Paper3_MacroSupervised_preview.ipynb`  
+- `notebooks/paper3_macro_supervise_redacted.ipynb`  
   Redacted preview notebook showing:
   - high-level feature set (yield spreads + macro indicators)  
   - model framing (12-month-ahead recession probability via logistic regression)  
@@ -25,8 +26,6 @@ The full implementation (data pipeline, complete notebook, and internal diagnost
   Typical contents include:
   - `recession_probabilities_macro_supervised.png` — modeled recession probability series with NBER shading  
   - `macro_conditioned_feature_contributions.png` — illustrative macro-supervised signal view  
-
-*(Filenames may differ slightly; see the `figures/` folder for exact names.)*
 
 ---
 
