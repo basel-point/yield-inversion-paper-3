@@ -12,7 +12,7 @@ The full modeling pipeline (data engineering, full notebook, internal diagnostic
 
 ## Repository Contents
 
-### ** Redacted Notebook**
+**Redacted Notebook**
 **[paper3_macro_supervise_redacted.ipynb](notebooks/paper3_macro_supervise_redacted.ipynb)**  
 A preview notebook showing:
 
@@ -25,7 +25,7 @@ All sensitive components (data loading, feature engineering code, validation loo
 
 ---
 
-### ** Figures**
+**Figures**
 Static PNGs used in the Substack article:
 
 - **[ROC_curves_macro_extended_models.png](figures/ROC_curves_macro_extended_models.png)**  
