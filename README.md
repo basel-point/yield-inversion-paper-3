@@ -24,8 +24,8 @@ Supervised Logistic Model with Macro Variables for Recession Probability
 - `figures/`  
   Static PNGs used in the Substack article, for quick reference and citation.  
   Typical contents include:
-  - `recession_probabilities_macro_supervised.png` — modeled recession probability series with NBER shading  
-  - `macro_conditioned_feature_contributions.png` — illustrative macro-supervised signal view  
+  - `scenario-based_conditional_recession_probabilities.png`   
+  - `ROC_curves_macro_extended_models.png` 
 
 ---
 
