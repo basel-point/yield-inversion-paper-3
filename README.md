@@ -1,80 +1,113 @@
 # Basel Point — Paper 3: Supervised Logistic Model with Macro Variables
 
-This repository provides the **public companion materials** for **Basel Point — Paper 3**:
+This repository provides the public companion materials for **Basel Point — Paper 3**:
 
-> **“Why the Yield Curve Lost Its Signal and How to Recover It”**  
-> Substack: https://thebaselpoint.substack.com/p/why-the-yield-curve-lost-its-signal
+**“Why the Yield Curve Lost Its Signal — And How to Recover It”**  
+Substack: https://thebaselpoint.substack.com/p/why-the-yield-curve-lost-its-signal
 
-It includes a **redacted preview notebook** and **static figures** that illustrate the main model outputs.  
-The full implementation (data pipeline, complete notebook, and internal diagnostics) is maintained in a **separate private repository**.
+It includes a **redacted preview notebook** and **static figures** illustrating the model’s key outputs.  
+The full modeling pipeline (data engineering, full notebook, internal diagnostics) is maintained in a **private research repository**.
 
-Supervised Logistic Model with Macro Variables for Recession Probability
 ---
 
 ## Repository Contents
 
-- `notebooks/paper3_macro_supervise_redacted.ipynb`  
-  Redacted preview notebook showing:
-  - high-level feature set (yield spreads + macro indicators)  
-  - model framing (12-month-ahead recession probability via logistic regression)  
-  - selected charts and summary outputs  
+### ** Redacted Notebook**
+**[paper3_macro_supervise_redacted.ipynb](notebooks/paper3_macro_supervise_redacted.ipynb)**  
+A preview notebook showing:
 
-  Certain code blocks, data-loading logic, and feature-engineering details have been intentionally removed.
+- feature set overview (yield spreads + macro indicators)  
+- model structure (12-month-ahead recession probability using logistic regression)  
+- selected figures  
+- explanatory commentary  
 
-- `figures/`  
-  Static PNGs used in the Substack article, for quick reference and citation.  
-  Typical contents include:
-  - `scenario-based_conditional_recession_probabilities.png`   
-  - `ROC_curves_macro_extended_models.png` 
+All sensitive components (data loading, feature engineering code, validation loops, and scenario procedures) have been intentionally removed.
+
+---
+
+### ** Figures**
+Static PNGs used in the Substack article:
+
+- **[ROC_curves_macro_extended_models.png](figures/ROC_curves_macro_extended_models.png)**  
+- **[scenario-based_conditional_recession_probabilities.png](figures/scenario-based_conditional_recession_probabilities.png)**  
+
+These illustrate the predictive lift from macro-supervised models and the recession probability bands under different macro-economic scenarios.
 
 ---
 
 ## Method (High-Level Overview)
 
-The analysis combines:
+This paper extends yield-curve recession modeling by incorporating **macro-supervised features**, including:
 
-- **Yield curve inputs**  
-  - 10Y–3M and 10Y–2Y Treasury spreads
+- **Yield curve signals**  
+  - 10Y–3M spread  
+  - 10Y–2Y spread  
 
-- **Macro indicators** (examples)  
-  - Business cycle/ISM-type indicators  
-  - Labor market measures (claims, unemployment dynamics)  
-  - Credit and stress proxies  
-  - Risk sentiment indices  
+- **Macro indicators**  
+  - ISM-style business cycle measures  
+  - Labor market dynamics (initial claims, unemployment deltas)  
+  - Credit spreads (BBB, TED)  
+  - Stress & volatility proxies (e.g., MOVE, VIX)
 
-- **Target**  
-  - NBER recession indicator shifted 12 months ahead  
-  - Output: recession probability over a 12-month horizon
+- **Target variable**  
+  - NBER recession indicator, shifted 12 months ahead  
+  - Output: probability of recession one year into the future  
 
-The model is trained and evaluated with an **expanding-window (walk-forward) setup**, producing:
+Model training uses a **walk-forward expanding window** to mimic real-time forecasting.
 
-- recession probability curves  
-- regime-conditioned insights  
-- standard classification diagnostics (ROC/AUC, calibration, etc.)
+---
 
-This repo focuses on **illustrative artifacts**, not full reproducibility.
+## Scenario-Based Probability Bands (Explained)
+
+The probability bands shown in:
+
+- **scenario-based_conditional_recession_probabilities.png**
+
+represent **conditional recession probabilities under different macro-economic paths**, not Monte Carlo simulation.
+
+Specifically:
+
+1. **Yield curve variables are held at their historical/observed values.**
+2. **Macro inputs are set to different “scenarios”**—
+   - *Soft landing path* (strong labor market + improving credit spreads)  
+   - *Baseline path*  
+   - *Downside path* (weaker ISM, rising claims, widening credit spreads)
+
+3. The logistic model is re-evaluated under each scenario to generate:
+   - upper/lower probability bands  
+   - scenario-conditional trajectories  
+   - insights into when the yield curve signal strengthens or weakens  
+
+This allows the model to answer:
+> “What is the recession probability if macro conditions stay strong?  
+> What if they deteriorate?  
+> How wide is the uncertainty band?”
+
+It is **scenario conditioning**, not Monte Carlo.
 
 ---
 
 ## What Is *Not* Included Here
 
-To preserve IP and avoid casual cloning, this repository **does not include**:
+To protect intellectual property and avoid trivial duplication, the following are **omitted**:
 
-- raw or processed data files  
-- full feature-engineering code  
-- full training + evaluation pipelines  
-- environment and infrastructure details  
+- raw or processed data  
+- feature engineering code  
+- full model-training pipelines  
+- expanding-window validation logic  
+- configuration files  
+- model artifacts  
 
-Those elements exist in a **private working repo** and are available only for **professional review under appropriate conditions**.
+The full implementation is stored in a **private repo** and available only for professional review.
 
 ---
 
 ## Access & Contact
 
-For collaboration, technical review, or discussion of the full modeling pipeline:
+For collaboration, code review, or discussion of the full modeling framework:
 
-- **Email:** thebaselpoint@gmail.com  
-- **Substack:** https://thebaselpoint.substack.com  
+**Email:** thebaselpoint@gmail.com  
+**Substack:** https://thebaselpoint.substack.com  
 
 © 2025 The Basel Point Research. All rights reserved.  
 Prepared by S.Y. Kim.
